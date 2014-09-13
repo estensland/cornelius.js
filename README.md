@@ -4,4 +4,10 @@ cornelius.js
 A DOM editing library from the infobyt.es brain trust
 
 
-I made the repo while on a train, bring it on cornelius
+Make a div:
+cornelius.div('Nothing.', {class: 'Yukon', id: 'silver-and-gold'})
+=> <div class='Yukon' id='silver-and-gold'>Nothing.</div>
+
+Make an h tag:
+cornelius.h('1', ' Lanczos algorithm', {class: 'Numerical-linear-algebra'})
+=> <h1 class='Numerical-linear-algebra'> Lanczos alogrithm</h1>

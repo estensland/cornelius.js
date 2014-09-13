@@ -58,6 +58,19 @@ window.cornelius = (function(){
 
   var cornelius = {
     createTag: function(tag, content, options){
+      var newTag = document.createElement(tag);
+      cornelius.applyAttributesToTag(newTag, options);
+      newTag.innerText = content;
+      return newTag;
+    },
+
+    applyAttributesToTag: function(newTag, options){
+      corHelpiers.each(options, function(key, value){
+        newTag.setAttribute(key,value);
+      });
+    },
+
+    createTagAsString: function(tag, content, options){
       attributes = corHelpiers.map(options, function(key, value){
         return key + "='" + value +"'";
       });
@@ -72,12 +85,12 @@ window.cornelius = (function(){
       return openTag + content + "</" + tag + '>';
     },
 
-    h: function(num, content){
+    h: function(num, content, options){
       return this.createTag('h'+num, content, options);
     },
 
-    div: function(num, content, options){
-      return this.createTag('h'+num, content, options);
+    div: function(content, options){
+      return this.createTag('div', content, options);
     },
   };
 
