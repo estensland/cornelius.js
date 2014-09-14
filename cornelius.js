@@ -1,5 +1,5 @@
 window.cornelius = (function(){
-  var corHelpiers = {
+  var corHelpers = {
     // These are adapted from github.com/estensland/MeadHall/Heorot-JS
     each: function(input, func){
       if (input instanceof Array){
@@ -61,17 +61,17 @@ window.cornelius = (function(){
       var newTag = document.createElement(tag);
       cornelius.applyAttributesToTag(newTag, options);
       newTag.innerText = content;
-      return newTag;
+      return document.body.append(newTag);
     },
 
     applyAttributesToTag: function(newTag, options){
-      corHelpiers.each(options, function(key, value){
+      corHelpers.each(options, function(key, value){
         newTag.setAttribute(key,value);
       });
     },
 
     createTagAsString: function(tag, content, options){
-      attributes = corHelpiers.map(options, function(key, value){
+      attributes = corHelpers.map(options, function(key, value){
         return key + "='" + value +"'";
       });
 
