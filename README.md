@@ -1,7 +1,7 @@
 cornelius.js
 ============
 
-A DOM editing library from [Neal Peters](https://github.com/estensland) and [Eric Stensland](https://github.com/estensland).
+A DOM editing library from [Neal Peters](https://github.com/nealcpeters) and [Eric Stensland](https://github.com/estensland).
 
 
 Make a div:
