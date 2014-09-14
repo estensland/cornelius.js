@@ -61,7 +61,7 @@ window.cornelius = (function(){
       var newTag = document.createElement(tag);
       cornelius.applyAttributesToTag(newTag, options);
       newTag.innerText = content;
-      return newTag;
+      return document.body.append(newTag);
     },
 
     applyAttributesToTag: function(newTag, options){
@@ -516,5 +516,3 @@ window.cornelius = (function(){
 
   return cornelius;
 }());
-
-cornelius.div('Nothing.', {class: 'Yukon', id: 'silver-and-gold'});
