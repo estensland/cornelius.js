@@ -83,8 +83,18 @@ window.cornelius = (function(){
         openTag = openTag + ">";
       }
       return openTag + content + "</" + tag + '>';
-    },    
+    },
 
+    attachTag: function(tag, location){
+      if (location === undefined){
+        return document.body.appendChild(tag);
+      }
+      else {
+        location.appendChild(tag);
+      }
+    },
+
+    // Individually Listed Tags:
     a: function(content, options){
       return this.createTag('a', content, options);
     },
@@ -171,7 +181,7 @@ window.cornelius = (function(){
 
     comment: function(content, options){
       return this.createTag('!--...--', content, options);
-    },    
+    },
 
     datalist: function(content, options){
       return this.createTag('datalist', content, options);
@@ -207,7 +217,7 @@ window.cornelius = (function(){
 
     doctype: function(content, options){
       return this.createTag('!DOCTYPE', content, options);
-    },    
+    },
 
     dt: function(content, options){
       return this.createTag('dt', content, options);
@@ -243,7 +253,7 @@ window.cornelius = (function(){
 
     h: function(num, content, options){
       return this.createTag('h'+num, content, options);
-    },    
+    },
 
     head: function(content, options){
       return this.createTag('head', content, options);
@@ -336,15 +346,11 @@ window.cornelius = (function(){
     nav: function(content, options){
       return this.createTag('nav', content, options);
     },
-   
+
     noscript: function(content, options){
       return this.createTag('noscript', content, options);
     },
 
-    object: function(content, options){
-      return this.createTag('object', content, options);
-    },  
-    
     object: function(content, options){
       return this.createTag('object', content, options);
     },
