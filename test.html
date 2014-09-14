@@ -1,0 +1,20 @@
+<body>
+
+</body>
+
+<script type="text/javascript" src='cornelius.js'></script>
+
+<script>
+
+      var x = cornelius.div('My Div', {class:'classy', style: 'background-color:blue;color:pink;'})
+      cornelius.p('Be inside!', {class:'classy'}, x)
+      cornelius.p('Also inside', {class:'a-class'}, x)
+
+      cornelius.nest
+        (
+          cornelius.div('', {class:'nest-div', style: 'background-color:red;color:yellow;'}), [
+            cornelius.h(2, 'I wish you a long life, my good sir!', {class:'nested-h2', id:'it-rocks-socks'}),
+            cornelius.p('word up', {class:'nested-p'})
+          ]
+        );
+</script>
