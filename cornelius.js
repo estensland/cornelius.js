@@ -37,6 +37,13 @@ window.cornelius = (function(){
   };
 
   var cornelius = {
+    nest: function(){
+      var parent = arguments[0];
+      corHelpers.each(arguments[1], function(i){
+        parent.appendChild(i);
+      });
+    },
+
     createTag: function(tag, content, options, parent){
       var newTag = document.createElement(tag);
       cornelius.applyAttributesToTag(newTag, options);
