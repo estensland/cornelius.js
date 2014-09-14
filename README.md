@@ -1,7 +1,7 @@
 cornelius.js
 ============
 
-A DOM editing library from the infobyt.es brain trust
+A DOM editing library from [Neal Peters](https://github.com/nealcpeters) and [Eric Stensland](https://github.com/estensland).
 
 
 Make a div:

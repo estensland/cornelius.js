@@ -1,5 +1,5 @@
 window.cornelius = (function(){
-  var corHelpiers = {
+  var corHelpers = {
     // These are adapted from github.com/estensland/MeadHall/Heorot-JS
     each: function(input, func){
       if (input instanceof Array){
@@ -33,34 +33,10 @@ window.cornelius = (function(){
         }
       }
       return returnArray;
-    },
-
-    select: function(input, func){
-      returnArray = [];
-      for (var i=0, ii = input.length; i < ii; i ++) {
-        if (func(input[i])){
-          returnArray.push(input[i]);
-        }
-      }
-      return returnArray;
-    },
-
-    reject: function(input, func){
-      returnArray = [];
-      for (var i=0, ii = input.length; i < ii; i ++) {
-        if (!func(input[i])){
-          returnArray.push(input[i]);
-        }
-      }
-      return returnArray;
     }
   };
 
   var cornelius = {
-    nest: function(){
-      arguments[1].appendChild(arguments[0]);
-    },
-
     createTag: function(tag, content, options, parent){
       var newTag = document.createElement(tag);
       cornelius.applyAttributesToTag(newTag, options);
@@ -71,16 +47,17 @@ window.cornelius = (function(){
       else {
         return parent.appendChild(newTag);
       }
+      return document.body.append(newTag);
     },
 
     applyAttributesToTag: function(newTag, options){
-      corHelpiers.each(options, function(key, value){
+      corHelpers.each(options, function(key, value){
         newTag.setAttribute(key,value);
       });
     },
 
     createTagAsString: function(tag, content, options){
-      attributes = corHelpiers.map(options, function(key, value){
+      attributes = corHelpers.map(options, function(key, value){
         return key + "='" + value +"'";
       });
 
@@ -371,8 +348,8 @@ window.cornelius = (function(){
       return this.createTag('output', content, options, parent);
     },
 
-    p: function(content, options, parent, parent){
-      return this.createTag('p', content, options, parent, parent);
+    p: function(content, options, parent){
+      return this.createTag('p', content, options, parent);
     },
 
     param: function(content, options, parent){
