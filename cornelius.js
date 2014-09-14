@@ -57,11 +57,20 @@ window.cornelius = (function(){
   };
 
   var cornelius = {
-    createTag: function(tag, content, options){
+    nest: function(){
+      arguments[1].appendChild(arguments[0]);
+    },
+
+    createTag: function(tag, content, options, parent){
       var newTag = document.createElement(tag);
       cornelius.applyAttributesToTag(newTag, options);
       newTag.innerText = content;
-      return newTag;
+      if (parent === undefined){
+        return document.body.appendChild(newTag);
+      }
+      else {
+        return parent.appendChild(newTag);
+      }
     },
 
     applyAttributesToTag: function(newTag, options){
@@ -85,438 +94,429 @@ window.cornelius = (function(){
       return openTag + content + "</" + tag + '>';
     },
 
-    attachTag: function(tag, location){
-      if (location === undefined){
-        return document.body.appendChild(tag);
-      }
-      else {
-        location.appendChild(tag);
-      }
-    },
-
     // Individually Listed Tags:
-    a: function(content, options){
-      return this.createTag('a', content, options);
+    a: function(content, options, parent){
+      return this.createTag('a', content, options, parent);
     },
 
-    abbr: function(content, options){
-      return this.createTag('abbr', content, options);
+    abbr: function(content, options, parent){
+      return this.createTag('abbr', content, options, parent);
     },
 
-    address: function(content, options){
-      return this.createTag('address', content, options);
+    address: function(content, options, parent){
+      return this.createTag('address', content, options, parent);
     },
 
-    area: function(content, options){
-      return this.createTag('area', content, options);
+    area: function(content, options, parent){
+      return this.createTag('area', content, options, parent);
     },
 
-    article: function(content, options){
-      return this.createTag('article', content, options);
+    article: function(content, options, parent){
+      return this.createTag('article', content, options, parent);
     },
 
-    aside: function(content, options){
-      return this.createTag('aside', content, options);
+    aside: function(content, options, parent){
+      return this.createTag('aside', content, options, parent);
     },
 
-    audio: function(content, options){
-      return this.createTag('audio', content, options);
+    audio: function(content, options, parent){
+      return this.createTag('audio', content, options, parent);
     },
 
-    b: function(content, options){
-      return this.createTag('b', content, options);
+    b: function(content, options, parent){
+      return this.createTag('b', content, options, parent);
     },
 
-    base: function(content, options){
-      return this.createTag('base', content, options);
+    base: function(content, options, parent){
+      return this.createTag('base', content, options, parent);
     },
 
-    bdi: function(content, options){
-      return this.createTag('bdi', content, options);
+    bdi: function(content, options, parent){
+      return this.createTag('bdi', content, options, parent);
     },
 
-    bdo: function(content, options){
-      return this.createTag('bdo', content, options);
+    bdo: function(content, options, parent){
+      return this.createTag('bdo', content, options, parent);
     },
 
-    blockquote: function(content, options){
-      return this.createTag('blockquote', content, options);
+    blockquote: function(content, options, parent){
+      return this.createTag('blockquote', content, options, parent);
     },
 
-    body: function(content, options){
-      return this.createTag('body', content, options);
+    body: function(content, options, parent){
+      return this.createTag('body', content, options, parent);
     },
 
-    br: function(content, options){
-      return this.createTag('br', content, options);
+    br: function(content, options, parent){
+      return this.createTag('br', content, options, parent);
     },
 
-    button: function(content, options){
-      return this.createTag('button', content, options);
+    button: function(content, options, parent){
+      return this.createTag('button', content, options, parent);
     },
 
-    canvas: function(content, options){
-      return this.createTag('canvas', content, options);
+    canvas: function(content, options, parent){
+      return this.createTag('canvas', content, options, parent);
     },
 
-    caption: function(content, options){
-      return this.createTag('caption', content, options);
+    caption: function(content, options, parent){
+      return this.createTag('caption', content, options, parent);
     },
 
-    cite: function(content, options){
-      return this.createTag('cite', content, options);
+    cite: function(content, options, parent){
+      return this.createTag('cite', content, options, parent);
     },
 
-    code: function(content, options){
-      return this.createTag('code', content, options);
+    code: function(content, options, parent){
+      return this.createTag('code', content, options, parent);
     },
 
-    col: function(content, options){
-      return this.createTag('col', content, options);
+    col: function(content, options, parent){
+      return this.createTag('col', content, options, parent);
     },
 
-    colgroup: function(content, options){
-      return this.createTag('colgroup', content, options);
+    colgroup: function(content, options, parent){
+      return this.createTag('colgroup', content, options, parent);
     },
 
-    comment: function(content, options){
-      return this.createTag('!--...--', content, options);
+    comment: function(content, options, parent){
+      return this.createTag('!--...--', content, options, parent);
     },
 
-    datalist: function(content, options){
-      return this.createTag('datalist', content, options);
+    datalist: function(content, options, parent){
+      return this.createTag('datalist', content, options, parent);
     },
 
-    dd: function(content, options){
-      return this.createTag('dd', content, options);
+    dd: function(content, options, parent){
+      return this.createTag('dd', content, options, parent);
     },
 
-    del: function(content, options){
-      return this.createTag('del', content, options);
+    del: function(content, options, parent){
+      return this.createTag('del', content, options, parent);
     },
 
-    details: function(content, options){
-      return this.createTag('details', content, options);
+    details: function(content, options, parent){
+      return this.createTag('details', content, options, parent);
     },
 
-    dfn: function(content, options){
-      return this.createTag('dfn', content, options);
+    dfn: function(content, options, parent){
+      return this.createTag('dfn', content, options, parent);
     },
 
-    dialog: function(content, options){
-      return this.createTag('dialog', content, options);
+    dialog: function(content, options, parent){
+      return this.createTag('dialog', content, options, parent);
     },
 
-    div: function(content, options){
-      return this.createTag('div', content, options);
+    div: function(content, options, parent){
+      return this.createTag('div', content, options, parent);
     },
 
-    dl: function(content, options){
-      return this.createTag('dl', content, options);
+    dl: function(content, options, parent){
+      return this.createTag('dl', content, options, parent);
     },
 
-    doctype: function(content, options){
-      return this.createTag('!DOCTYPE', content, options);
+    doctype: function(content, options, parent){
+      return this.createTag('!DOCTYPE', content, options, parent);
     },
 
-    dt: function(content, options){
-      return this.createTag('dt', content, options);
+    dt: function(content, options, parent){
+      return this.createTag('dt', content, options, parent);
     },
 
-    em: function(content, options){
-      return this.createTag('em', content, options);
+    em: function(content, options, parent){
+      return this.createTag('em', content, options, parent);
     },
 
-    embed: function(content, options){
-      return this.createTag('embed', content, options);
+    embed: function(content, options, parent){
+      return this.createTag('embed', content, options, parent);
     },
 
-    fieldset: function(content, options){
-      return this.createTag('fieldset', content, options);
+    fieldset: function(content, options, parent){
+      return this.createTag('fieldset', content, options, parent);
     },
 
-    figcaption: function(content, options){
-      return this.createTag('figcaption', content, options);
+    figcaption: function(content, options, parent){
+      return this.createTag('figcaption', content, options, parent);
     },
 
-    figure: function(content, options){
-      return this.createTag('figure', content, options);
+    figure: function(content, options, parent){
+      return this.createTag('figure', content, options, parent);
     },
 
-    footer: function(content, options){
-      return this.createTag('footer', content, options);
+    footer: function(content, options, parent){
+      return this.createTag('footer', content, options, parent);
     },
 
-    form: function(content, options){
-      return this.createTag('form', content, options);
+    form: function(content, options, parent){
+      return this.createTag('form', content, options, parent);
     },
 
-    h: function(num, content, options){
-      return this.createTag('h'+num, content, options);
+    h: function(num, content, options, parent){
+      return this.createTag('h'+num, content, options, parent);
     },
 
-    head: function(content, options){
-      return this.createTag('head', content, options);
+    head: function(content, options, parent){
+      return this.createTag('head', content, options, parent);
     },
 
-    header: function(content, options){
-      return this.createTag('header', content, options);
+    header: function(content, options, parent){
+      return this.createTag('header', content, options, parent);
     },
 
-    hr: function(content, options){
-      return this.createTag('hr', content, options);
+    hr: function(content, options, parent){
+      return this.createTag('hr', content, options, parent);
     },
 
-    html: function(content, options){
-      return this.createTag('html', content, options);
+    html: function(content, options, parent){
+      return this.createTag('html', content, options, parent);
     },
 
-    i: function(content, options){
-      return this.createTag('i', content, options);
+    i: function(content, options, parent){
+      return this.createTag('i', content, options, parent);
     },
 
-    iframe: function(content, options){
-      return this.createTag('iframe', content, options);
+    iframe: function(content, options, parent){
+      return this.createTag('iframe', content, options, parent);
     },
 
-    img: function(content, options){
-      return this.createTag('img', content, options);
+    img: function(content, options, parent){
+      return this.createTag('img', content, options, parent);
     },
 
-    input: function(content, options){
-      return this.createTag('input', content, options);
+    input: function(content, options, parent){
+      return this.createTag('input', content, options, parent);
     },
 
-    ins: function(content, options){
-      return this.createTag('ins', content, options);
+    ins: function(content, options, parent){
+      return this.createTag('ins', content, options, parent);
     },
 
-    kbd: function(content, options){
-      return this.createTag('kbd', content, options);
+    kbd: function(content, options, parent){
+      return this.createTag('kbd', content, options, parent);
     },
 
-    keygen: function(content, options){
-      return this.createTag('keygen', content, options);
+    keygen: function(content, options, parent){
+      return this.createTag('keygen', content, options, parent);
     },
 
-    label: function(content, options){
-      return this.createTag('label', content, options);
+    label: function(content, options, parent){
+      return this.createTag('label', content, options, parent);
     },
 
-    legend: function(content, options){
-      return this.createTag('legend', content, options);
+    legend: function(content, options, parent){
+      return this.createTag('legend', content, options, parent);
     },
 
-    li: function(content, options){
-      return this.createTag('li', content, options);
+    li: function(content, options, parent){
+      return this.createTag('li', content, options, parent);
     },
 
-    link: function(content, options){
-      return this.createTag('link', content, options);
+    link: function(content, options, parent){
+      return this.createTag('link', content, options, parent);
     },
 
-    main: function(content, options){
-      return this.createTag('main', content, options);
+    main: function(content, options, parent){
+      return this.createTag('main', content, options, parent);
     },
 
-    map: function(content, options){
-      return this.createTag('map', content, options);
+    map: function(content, options, parent){
+      return this.createTag('map', content, options, parent);
     },
 
-    mark: function(content, options){
-      return this.createTag('mark', content, options);
+    mark: function(content, options, parent){
+      return this.createTag('mark', content, options, parent);
     },
 
-    menu: function(content, options){
-      return this.createTag('menu', content, options);
+    menu: function(content, options, parent){
+      return this.createTag('menu', content, options, parent);
     },
 
-    menuitem: function(content, options){
-      return this.createTag('menuitem', content, options);
+    menuitem: function(content, options, parent){
+      return this.createTag('menuitem', content, options, parent);
     },
 
-    meta: function(content, options){
-      return this.createTag('meta', content, options);
+    meta: function(content, options, parent){
+      return this.createTag('meta', content, options, parent);
     },
 
-    meter: function(content, options){
-      return this.createTag('meter', content, options);
+    meter: function(content, options, parent){
+      return this.createTag('meter', content, options, parent);
     },
 
-    nav: function(content, options){
-      return this.createTag('nav', content, options);
+    nav: function(content, options, parent){
+      return this.createTag('nav', content, options, parent);
     },
 
-    noscript: function(content, options){
-      return this.createTag('noscript', content, options);
+    noscript: function(content, options, parent){
+      return this.createTag('noscript', content, options, parent);
     },
 
-    object: function(content, options){
-      return this.createTag('object', content, options);
+    object: function(content, options, parent){
+      return this.createTag('object', content, options, parent);
     },
 
-    ol: function(content, options){
-      return this.createTag('ol', content, options);
+    ol: function(content, options, parent){
+      return this.createTag('ol', content, options, parent);
     },
 
-    optgroup: function(content, options){
-      return this.createTag('optgroup', content, options);
+    optgroup: function(content, options, parent){
+      return this.createTag('optgroup', content, options, parent);
     },
 
-    option: function(content, options){
-      return this.createTag('option', content, options);
+    option: function(content, options, parent){
+      return this.createTag('option', content, options, parent);
     },
 
-    output: function(content, options){
-      return this.createTag('output', content, options);
+    output: function(content, options, parent){
+      return this.createTag('output', content, options, parent);
     },
 
-    p: function(content, options){
-      return this.createTag('p', content, options);
+    p: function(content, options, parent, parent){
+      return this.createTag('p', content, options, parent, parent);
     },
 
-    param: function(content, options){
-      return this.createTag('param', content, options);
+    param: function(content, options, parent){
+      return this.createTag('param', content, options, parent);
     },
 
-    pre: function(content, options){
-      return this.createTag('pre', content, options);
+    pre: function(content, options, parent){
+      return this.createTag('pre', content, options, parent);
     },
 
-    progress: function(content, options){
-      return this.createTag('progress', content, options);
+    progress: function(content, options, parent){
+      return this.createTag('progress', content, options, parent);
     },
 
-    q: function(content, options){
-      return this.createTag('q', content, options);
+    q: function(content, options, parent){
+      return this.createTag('q', content, options, parent);
     },
 
-    rp: function(content, options){
-      return this.createTag('rp', content, options);
+    rp: function(content, options, parent){
+      return this.createTag('rp', content, options, parent);
     },
 
-    rt: function(content, options){
-      return this.createTag('rt', content, options);
+    rt: function(content, options, parent){
+      return this.createTag('rt', content, options, parent);
     },
 
-    ruby: function(content, options){
-      return this.createTag('ruby', content, options);
+    ruby: function(content, options, parent){
+      return this.createTag('ruby', content, options, parent);
     },
 
-    s: function(content, options){
-      return this.createTag('s', content, options);
+    s: function(content, options, parent){
+      return this.createTag('s', content, options, parent);
     },
 
-    samp: function(content, options){
-      return this.createTag('samp', content, options);
+    samp: function(content, options, parent){
+      return this.createTag('samp', content, options, parent);
     },
 
-    script: function(content, options){
-      return this.createTag('script', content, options);
+    script: function(content, options, parent){
+      return this.createTag('script', content, options, parent);
     },
 
-    section: function(content, options){
-      return this.createTag('section', content, options);
+    section: function(content, options, parent){
+      return this.createTag('section', content, options, parent);
     },
 
-    select: function(content, options){
-      return this.createTag('select', content, options);
+    select: function(content, options, parent){
+      return this.createTag('select', content, options, parent);
     },
 
-    small: function(content, options){
-      return this.createTag('small', content, options);
+    small: function(content, options, parent){
+      return this.createTag('small', content, options, parent);
     },
 
-    source: function(content, options){
-      return this.createTag('source', content, options);
+    source: function(content, options, parent){
+      return this.createTag('source', content, options, parent);
     },
 
-    span: function(content, options){
-      return this.createTag('span', content, options);
+    span: function(content, options, parent){
+      return this.createTag('span', content, options, parent);
     },
 
-    strong: function(content, options){
-      return this.createTag('strong', content, options);
+    strong: function(content, options, parent){
+      return this.createTag('strong', content, options, parent);
     },
 
-    style: function(content, options){
-      return this.createTag('style', content, options);
+    style: function(content, options, parent){
+      return this.createTag('style', content, options, parent);
     },
 
-    sub: function(content, options){
-      return this.createTag('sub', content, options);
+    sub: function(content, options, parent){
+      return this.createTag('sub', content, options, parent);
     },
 
-    summary: function(content, options){
-      return this.createTag('summary', content, options);
+    summary: function(content, options, parent){
+      return this.createTag('summary', content, options, parent);
     },
 
-    sup: function(content, options){
-      return this.createTag('sup', content, options);
+    sup: function(content, options, parent){
+      return this.createTag('sup', content, options, parent);
     },
 
-    table: function(content, options){
-      return this.createTag('table', content, options);
+    table: function(content, options, parent){
+      return this.createTag('table', content, options, parent);
     },
 
-    tbody: function(content, options){
-      return this.createTag('tbody', content, options);
+    tbody: function(content, options, parent){
+      return this.createTag('tbody', content, options, parent);
     },
 
-    td: function(content, options){
-      return this.createTag('td', content, options);
+    td: function(content, options, parent){
+      return this.createTag('td', content, options, parent);
     },
 
-    textarea: function(content, options){
-      return this.createTag('textarea', content, options);
+    textarea: function(content, options, parent){
+      return this.createTag('textarea', content, options, parent);
     },
 
-    tfoot: function(content, options){
-      return this.createTag('tfoot', content, options);
+    tfoot: function(content, options, parent){
+      return this.createTag('tfoot', content, options, parent);
     },
 
-    th: function(content, options){
-      return this.createTag('th', content, options);
+    th: function(content, options, parent){
+      return this.createTag('th', content, options, parent);
     },
 
-    thead: function(content, options){
-      return this.createTag('thead', content, options);
+    thead: function(content, options, parent){
+      return this.createTag('thead', content, options, parent);
     },
 
-    time: function(content, options){
-      return this.createTag('time', content, options);
+    time: function(content, options, parent){
+      return this.createTag('time', content, options, parent);
     },
 
-    title: function(content, options){
-      return this.createTag('title', content, options);
+    title: function(content, options, parent){
+      return this.createTag('title', content, options, parent);
     },
 
-    tr: function(content, options){
-      return this.createTag('tr', content, options);
+    tr: function(content, options, parent){
+      return this.createTag('tr', content, options, parent);
     },
 
-    track: function(content, options){
-      return this.createTag('track', content, options);
+    track: function(content, options, parent){
+      return this.createTag('track', content, options, parent);
     },
 
-    u: function(content, options){
-      return this.createTag('u', content, options);
+    u: function(content, options, parent){
+      return this.createTag('u', content, options, parent);
     },
 
-    ul: function(content, options){
-      return this.createTag('ul', content, options);
+    ul: function(content, options, parent){
+      return this.createTag('ul', content, options, parent);
     },
 
-    var: function(content, options){
-      return this.createTag('var', content, options);
+    var: function(content, options, parent){
+      return this.createTag('var', content, options, parent);
     },
 
-    video: function(content, options){
-      return this.createTag('video', content, options);
+    video: function(content, options, parent){
+      return this.createTag('video', content, options, parent);
     },
 
-    wbr: function(content, options){
-      return this.createTag('wbr', content, options);
+    wbr: function(content, options, parent){
+      return this.createTag('wbr', content, options, parent);
     },
   };
 
